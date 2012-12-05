@@ -11,6 +11,12 @@ end
 
 module Ssvs
   class Application < Rails::Application
+
+    # TODO
+    # When deploying on Heroku, may want to set:
+    #confog.assets.initialize_on_precompile = false # So application can not access the db when precompiling
+
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
