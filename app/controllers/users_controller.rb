@@ -80,4 +80,10 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def vote
+    respond_to do |format|
+      render :vote
+    end
+  end
 end
