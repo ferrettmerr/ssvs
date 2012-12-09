@@ -1,0 +1,37 @@
+<h1>Enter your vote</h1>
+
+<%= form_tag("tally_vote") do %>
+  
+  <% if flash[:error] -%>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <p id="error"><%= flash[:error] %></p>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Vote</th>
+
+      <th></th>
+    </tr>
+
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= candidate.name %></td>
+        <td> <%= check_box_tag candidate.id %></td>
+        <td><%= link_to 'Candidate', candidate %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div class="actions">
+    <%= submit_tag 'Vote!' %>
+  </div>
+
+<% end %>
+

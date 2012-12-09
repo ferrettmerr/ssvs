@@ -1,8 +1,11 @@
 Ssvs::Application.routes.draw do
+
   resources :candidates
 
   resources :users
-  match '/users/:id/vote', :controller => 'users', :action => vote
+  match '/vote', :controller => 'votes', :action => "vote"
+  match '/tally_vote', :controller => 'votes', :action => "tally_vote"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
