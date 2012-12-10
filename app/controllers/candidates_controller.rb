@@ -41,7 +41,7 @@ class CandidatesController < ApplicationController
   # POST /candidates.json
   def create
     @candidate = Candidate.new(params[:candidate])
-
+    @candidate.votes = '0'
     respond_to do |format|
       if @candidate.save
         format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }

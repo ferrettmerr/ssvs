@@ -23,7 +23,7 @@
     <% @candidates.each do |candidate| %>
       <tr>
         <td><%= candidate.name %></td>
-        <td> <%= check_box_tag candidate.id %></td>
+        <td> <%= radio_button_tag 'candidate', candidate.id %></td>
         <td><%= link_to 'Candidate', candidate %></td>
       </tr>
     <% end %>
