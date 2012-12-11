@@ -1,0 +1,39 @@
+<h1>Validate SSN</h1>
+
+<%= form_tag("add_user") do %>
+  
+  <% if flash[:error] -%>
+    <div id="error_explanation">
+      <h2>Please correct the following errors:</h2>
+      <ul>
+        <p id="error"><%= flash[:error] %></p>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>Please enter The new users info to create the account.</div><br>
+  <table>
+    <tr>
+      <td>
+        Email: 
+      </td>
+      <td>
+        <%= text_field_tag 'email' %>
+      </td>
+    </tr>
+     <tr>
+      <td>
+        SSN: 
+      </td>
+      <td>
+        <%= text_field_tag 'ssn' %>
+      </td>
+    </tr>
+
+  </table>
+  <div class="actions">
+    <%= submit_tag 'Add user' %>
+  </div>
+
+<% end %>
+

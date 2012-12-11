@@ -13,13 +13,12 @@
     <th></th>
     <th></th>
   </tr>
-
 <% @candidates.each do |candidate| %>
   <tr>
     <td><%= candidate.name %></td>
     <td><%= candidate.votes %></td>
     <td><%= link_to 'Show', candidate %></td>
-    <% if user_signed_in? %>
+    <% if can? :update, Candidate %>
       <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
       <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
@@ -29,4 +28,7 @@
 
 <br />
 
+<% if can? :update, Candidate %>
 <%= link_to 'New Candidate', new_candidate_path %>
+<%= link_to 'New User', :create_user %>
+<% end %>
