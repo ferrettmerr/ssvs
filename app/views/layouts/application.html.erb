@@ -26,9 +26,22 @@
         </div>
       </nav>
     </header>
+    <div id="main" role="main">
+      <div class="container">
+        <div class="content">
+           <div class="row">
+            <div class="span12">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+            </div>
+          </div>
+          <footer>
+          </footer>
+        </div>
+      </div> <!--! end of .container -->
+    </div> <!--! end of #main -->
 
-
-	<div id="container">
+	<!--<div id="container">
 		<div id="user_nav">
 			<% if user_signed_in? %>
 				signed in as  <%= current_user.email %>, Not you?
@@ -41,7 +54,7 @@
 		<p class="notice"><%= notice %></p>
 		<p class="alert"><%= alert %></p>
 		<%= yield %>
-	</div>
+	</div>-->
 </body>
 </html>
 

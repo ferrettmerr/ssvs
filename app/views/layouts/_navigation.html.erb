@@ -1,21 +1,28 @@
 <%= link_to "Home", root_path, :class => 'brand' %>
 <ul class="nav">
+    <li>
+      <%= link_to('Listing', users_path)  %>
+    </li>
+  <% if can? :update, Candidate %>
+  <li>
+    <%= link_to('New Candidate', new_candidate_path) %>
+  </li>
+  <li>
+    <%= link_to('New User', :create_user) %>
+  </li>
+  <% end %>
   <% if user_signed_in? %>
     <li>
     <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>        
     </li>
   <% else %>
     <li>
-    <%= link_to('Login', new_user_session_path)  %>  
+    <%= link_to('Sign in', new_user_session_path)  %>  
     </li>
   <% end %>
   <% if user_signed_in? %>
     <li>
     <%= link_to('Edit account', edit_user_registration_path) %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Sign up', new_user_registration_path)  %>
     </li>
   <% end %>
 </ul>
