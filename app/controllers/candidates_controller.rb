@@ -44,9 +44,10 @@ class CandidatesController < ApplicationController
   # POST /candidates
   # POST /candidates.json
   def create
+    @candidate = Candidate.new(params[:candidate])
+
     authorize! :update, @candidate
 
-    @candidate = Candidate.new(params[:candidate])
     @candidate.votes = '0'
     respond_to do |format|
       if @candidate.save

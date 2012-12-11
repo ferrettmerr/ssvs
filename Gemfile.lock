@@ -122,11 +122,8 @@ PLATFORMS
 
 DEPENDENCIES
   aes
-<<<<<<< HEAD
   bootstrap-sass
-=======
   cancan
->>>>>>> 82830b029a3ef0d4f50bea59c7b8e2600b4880cc
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
