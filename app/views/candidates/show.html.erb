@@ -10,6 +10,7 @@
   <%= @candidate.votes %>
 </p>
 
-
-<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
+  <% if can? :update, Candidate %>
+  	<%= link_to 'Edit', edit_candidate_path(@candidate) %>  |
+  <% end %>
 <%= link_to 'Back', candidates_path %>
