@@ -1,0 +1,22 @@
+<h1>Validate SSN</h1>
+
+<%= form_tag("verify_ssn") do %>
+  
+  <% if flash[:error] -%>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this ssn from being verified:</h2>
+      <ul>
+        <p id="error"><%= flash[:error] %></p>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>Please enter your SSN below to validate the account.</div><br>
+  <%= text_field_tag 'ssn' %>
+
+  <div class="actions">
+    <%= submit_tag 'Validate SSN' %>
+  </div>
+
+<% end %>
+

@@ -2,13 +2,22 @@ Ssvs::Application.routes.draw do
 
   devise_for :users
 
-  devise_for :installs
+  devise_for :users, controllers: { confirmations: 'confirmations' }
+  devise_scope :user do
+    get '/confirmation-getting-started' => 'users#validate_ssn', as: 'confirmation_getting_started'
+  end
+
+  match 'validate_ssn', :controller => 'users', :action=>'validate_ssn'
+  match '/verify_ssn', :controller => 'users', :action => "verify_ssn"
 
   resources :candidates
+    
   match '/vote', :controller => 'votes', :action => "vote"
   match '/tally_vote', :controller => 'votes', :action => "tally_vote"
 
-  
+
+
+  root :to => "candidates#index"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

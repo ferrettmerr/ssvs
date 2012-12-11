@@ -1,17 +1,18 @@
 class VotesController < ApplicationController
 
+  before_filter :authenticate_user!
   def vote
     #Testing until I get auth working
-    params[:id] = 1
-    @user = User.find(params[:id])
-    @candidates = Candidate.all()
-    render :vote
+    user = current_user
+    if user.did_vote
+      redirect_to :candidates
+    else
+      @candidates = Candidate.all()
+      render :vote
+    end
   end
 
   def tally_vote
-    #Testing until I get auth working
-    params[:id] = 1
-    @user = User.find(params[:id])
     
     if (params[:candidate].nil?)
       redirect_to :vote, :flash => { :error => params[:candidate]}
@@ -24,7 +25,11 @@ class VotesController < ApplicationController
       candidate.votes = (Integer(candidate.votes) + 1).to_s
       candidate.save!
 
-      redirect_to :vote, :flash => {:notice => "Thanks for voting!"}
+      user = current_user
+      user.did_vote = true
+      user.save
+
+      redirect_to :candidates, :flash => {:notice => "Thanks for voting!"}
     end
   end
 end

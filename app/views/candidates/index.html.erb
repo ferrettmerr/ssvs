@@ -1,5 +1,10 @@
 <h1>Listing candidates</h1>
 
+
+<% if user_signed_in? and not current_user.did_vote%>
+  <h3>Click <%= link_to 'Here', :vote %> to vote</h3>
+<% end %>
+
 <table>
   <tr>
     <th>Name</th>
@@ -14,8 +19,10 @@
     <td><%= candidate.name %></td>
     <td><%= candidate.votes %></td>
     <td><%= link_to 'Show', candidate %></td>
-    <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
-    <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if user_signed_in? %>
+      <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+      <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
