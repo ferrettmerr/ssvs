@@ -23,6 +23,8 @@ gem 'devise'
 
 gem 'aes'
 
+gem 'bootstrap-sass'
+
 group :development, :test do
    gem 'sqlite3'
 end
