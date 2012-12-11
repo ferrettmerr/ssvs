@@ -24,7 +24,7 @@ class VotesController < ApplicationController
       candidate.votes = (Integer(candidate.votes) + 1).to_s
       candidate.save!
 
-      redirect_to :vote, :flash => { :notice => candidate.votes}
+      redirect_to :vote, :flash => {:notice => "Thanks for voting!"}
     end
   end
 end
