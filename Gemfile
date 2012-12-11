@@ -20,6 +20,7 @@ end
 gem 'jquery-rails'
 
 gem 'devise'
+gem 'cancan'
 
 gem 'aes'
 

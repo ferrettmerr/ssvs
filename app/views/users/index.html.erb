@@ -1,0 +1,22 @@
+<h1>Listing users</h1>
+
+
+<% if user_signed_in? and not current_user.did_vote%>
+  <h3>Click <%= link_to 'Here', :vote %> to vote</h3>
+<% end %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Did they vote?</th>
+  </tr>
+<% @users.each do |u| %>
+  <tr>
+    <td><%= u.email %></td>
+    <td><%= u.did_vote ? 'Yes' : 'No' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'Candidates', :candidates %>

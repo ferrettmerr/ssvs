@@ -3,7 +3,7 @@ class CandidatesController < ApplicationController
   # GET /candidates.json
   def index
     @candidates = Candidate.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @candidates }
@@ -25,6 +25,8 @@ class CandidatesController < ApplicationController
   # GET /candidates/new.json
   def new
     @candidate = Candidate.new
+    
+    authorize! :manage, @candidate
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,11 +37,15 @@ class CandidatesController < ApplicationController
   # GET /candidates/1/edit
   def edit
     @candidate = Candidate.find(params[:id])
+
+    authorize! :update, @candidate
   end
 
   # POST /candidates
   # POST /candidates.json
   def create
+    authorize! :update, @candidate
+
     @candidate = Candidate.new(params[:candidate])
     @candidate.votes = '0'
     respond_to do |format|
@@ -56,6 +62,8 @@ class CandidatesController < ApplicationController
   # PUT /candidates/1
   # PUT /candidates/1.json
   def update
+    authorize! :update, @candidate
+
     @candidate = Candidate.find(params[:id])
 
     respond_to do |format|
@@ -72,6 +80,8 @@ class CandidatesController < ApplicationController
   # DELETE /candidates/1
   # DELETE /candidates/1.json
   def destroy
+    authorize! :update, @candidate
+
     @candidate = Candidate.find(params[:id])
     @candidate.destroy
 

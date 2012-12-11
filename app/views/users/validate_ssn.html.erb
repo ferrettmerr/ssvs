@@ -12,7 +12,32 @@
   <% end %>
 
   <div>Please enter your SSN below to validate the account.</div><br>
-  <%= text_field_tag 'ssn' %>
+  <table>
+     <tr>
+      <td>
+        SSN: 
+      </td>
+      <td>
+        <%= text_field_tag 'ssn' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Password: 
+      </td>
+      <td>
+        <%= text_field_tag 'password' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Confirm Password: 
+      </td>
+      <td>
+        <%= text_field_tag 'confirm_password' %>
+      </td>
+    </tr>
+  </table>
 
   <div class="actions">
     <%= submit_tag 'Validate SSN' %>
