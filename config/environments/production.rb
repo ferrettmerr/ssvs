@@ -20,6 +20,19 @@ Ssvs::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "gmail.com",
+    :authentication => :login,
+    :user_name => "lawrencejbrewerjr@gmail.com",
+    :password => "balls111"
+  }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => 'ssvs.heroku.com' }
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
